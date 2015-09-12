@@ -16,7 +16,7 @@ guard 'spork', :cucumber_env => {'RAILS_ENV' => 'test'},
   watch('%r{features/support/}') {:cucumber}
 end
 
-guard 'rspec', all_after_pass: false do
+guard 'rspec', cmd: "rspec", all_after_pass: false do
 
   watch('config/routes.rb')
   # Custom Rails Tutorial specs
@@ -47,4 +47,16 @@ guard :spork, :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS
   watch('spec/spec_helper.rb') { :rspec }
   watch('test/test_helper.rb') { :test_unit }
   watch(%r{features/support/}) { :cucumber }
+end
+
+guard :bundler do
+  require 'guard/bundler'
+  require 'guard/bundler/verify'
+  helper = Guard::Bundler::Verify.new
+
+  files = ['Gemfile']
+  files += Dir['*.gemspec'] if files.any? { |f| helper.uses_gemspec?(f) }
+
+  # Assume files are symlinked from somewhere
+  files.each { |file| watch(helper.real_path(file)) }
 end
