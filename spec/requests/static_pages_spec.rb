@@ -50,3 +50,4 @@ describe "Static pages" do
 		click_link "Sign up now!"
 		expect(page).to have_title(full_title('Sign up'))
 end
+end

@@ -16,7 +16,7 @@ guard 'spork', :cucumber_env => {'RAILS_ENV' => 'test'},
   watch('%r{features/support/}') {:cucumber}
 end
 
-guard 'rspec', cmd: "rspec", all_after_pass: false do
+guard 'rspec', cmd: "bundle exec rspec", all_after_pass: false do
 
   watch('config/routes.rb')
   # Custom Rails Tutorial specs
