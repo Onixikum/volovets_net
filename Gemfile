@@ -12,6 +12,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '>=3.3.2'
+  gem 'rspec-its'
   gem 'guard-rspec', '>=4.6.0'
   gem 'spork-rails', '>=4.0.0'
   gem 'guard-spork', '>=1.5.0'
